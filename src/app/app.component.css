@@ -29,3 +29,16 @@ section {
   justify-content: center;
   width: 120px;
 }
+#add{
+  text-align: center;
+  color: #1DBFE7;
+
+}
+#app{
+  text-align: center;
+  background-color: white;
+}
+#ass{
+  text-align: center;
+  background-color: cadetblue;
+}

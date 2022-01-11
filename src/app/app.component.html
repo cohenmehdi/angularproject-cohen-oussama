@@ -1,13 +1,30 @@
 <nav>
   <a routerLink="/home">
-    <h1>{{titre}}</h1>
+    <img style="width: 25%;align: left;" src="assets/img/logoazur.jpg"/>
+    <mat-card id="app">
+
+      <h1 id="add" >
+
+      Master MIAGE Intense 2022
+      </h1>
+    </mat-card>
+    <div style="display:flex; flex-direction: row;">
+    <mat-card id="ass" style="width: 50%">Cohen Mohammed El Mehdi</mat-card>
+      <mat-card  style="width: 50%">Mahmoudi Moustafa Oussama</mat-card>
+    </div>
+    <h1 style="color: cornflowerblue;text-align: center" >{{titre}}</h1>
   </a>
 </nav>
-<mat-slide-toggle color="primary" (click)="onLogin()">Login</mat-slide-toggle>
-<br>
-<button mat-flat-button color="primary" (click)="initialiserLaBaseAvecDonneesDeTest()">PeuplerBD</button>
+
+<mat-card>
+  <mat-slide-toggle color="primary" (click)="onLogin()"><p style="color: cornflowerblue">Login</p></mat-slide-toggle>
+  <button style="left: 50px" mat-flat-button color="primary" (click)="initialiserLaBaseAvecDonneesDeTest()">PeuplerBD</button>
+</mat-card>
+
+
 <!--
   La ligne suivante dit "on affiche le composant qui correspond à l'URL courant"
   (à la route courante)
 -->
+
 <router-outlet></router-outlet>

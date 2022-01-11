@@ -1,5 +1,22 @@
 <main class="container">
 
+
+
+
+  <mat-divider></mat-divider>
+  <div id="divdiv">
+    <h2>{{titre}}</h2>
+    <p style="color: cornflowerblue">Nb total d'assignments : {{totalDocs}}</p>
+    <p style="color: cornflowerblue">Nb total de pages : {{totalPages}}</p>
+    <p style="color: cornflowerblue">Nb assignments par page : <input type="range" min=1 max=100 value=10 (change)="getAssignments()" [(ngModel)]="limit"> {{limit}}</p>
+    <div class="paginationBtn">
+      <button mat-raised-button color="primary" (click)="premierePage()" [disabled]="page===1">Première</button>&nbsp;
+      <button mat-raised-button color="primary" (click)="pagePrecedente()" [disabled]="!hasPrevPage">Précédente</button>&nbsp;
+      <button mat-raised-button color="primary" (click)="pageSuivante()" [disabled]="!hasNextPage">Suivante</button>&nbsp;
+      <button mat-raised-button color="primary" (click)="dernierePage()" [disabled]="page===totalPages">Dernière</button>
+    </div>
+  </div>
+
   <div class="ajouterBtn">
     <a routerLink="/add">
       <button mat-flat-button color="primary">
@@ -7,21 +24,8 @@
       </button>
     </a>
   </div>
-
-
-  <h2>{{titre}}</h2>
-  <p>Nb total d'assignments : {{totalDocs}}</p>
-  <p>Nb total de pages : {{totalPages}}</p>
-  <p>Nb assignments par page : <input type="range" min=1 max=100 value=10 (change)="getAssignments()" [(ngModel)]="limit"> {{limit}}</p>
-  <div class="paginationBtn">
-    <button mat-raised-button color="primary" (click)="premierePage()" [disabled]="page===1">Première</button>&nbsp;
-    <button mat-raised-button color="primary" (click)="pagePrecedente()" [disabled]="!hasPrevPage">Précédente</button>&nbsp;
-    <button mat-raised-button color="primary" (click)="pageSuivante()" [disabled]="!hasNextPage">Suivante</button>&nbsp;
-    <button mat-raised-button color="primary" (click)="dernierePage()" [disabled]="page===totalPages">Dernière</button>;
-  </div>
-
-  <mat-divider></mat-divider>
   <mat-list *ngFor="let assignment of assignments; let i=index">
+    <mat-card id="app">
     <nav>
       <a routerLink="/assignment/{{assignment.id}}">
         <h3 mat-subheader>{{assignment.dateDeRendu | date}}</h3>
@@ -38,7 +42,37 @@
         </mat-list-item>
       </a>
     </nav>
+    </mat-card>
   </mat-list>
+
+  <!--table mat-table [dataSource]="assignments" class="mat-elevation-z8 demo-table" >
+
+    <ng-container matColumnDef="demo-id">
+      <th mat-header-cell *matHeaderCellDef> Id</th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="demo-nom">
+      <th mat-header-cell *matHeaderCellDef > Nom </th>
+      <td mat-cell *matCellDef="let element"> {{element.nom}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="demo-dateDeRendu">
+      <th mat-header-cell *matHeaderCellDef> Date de Rendu </th>
+      <td mat-cell *matCellDef="let element"> {{element.dateDeRendu| date}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="demo-rendu">
+      <th mat-header-cell *matHeaderCellDef> Rendu </th>
+      <td mat-cell *matCellDef="let element"> {{element.rendu}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table-->
 
 
 </main>
